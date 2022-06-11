@@ -1,0 +1,18 @@
+{
+  "name": "eight-queens-kata",
+  "version": "1.0.0",
+  "description": "Eight Queens Kata",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^28.1.1",
+    "eslint": "^8.17.0",
+    "jest": "^28.1.1",
+    "ts-jest": "^28.0.4",
+    "typescript": "^4.7.3"
+  }
+}
