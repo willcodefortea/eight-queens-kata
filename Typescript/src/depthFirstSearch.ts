@@ -1,6 +1,6 @@
-import { Board, isBoardValid } from ".";
+import { Board, isBoardValid, isComplete } from ".";
 
-export const nextStates = (board: Board) => {
+const nextStates = (board: Board) => {
   const states: Board[] = [];
 
   for (let idx = 0; idx < board.length; idx++) {
@@ -17,15 +17,11 @@ export const nextStates = (board: Board) => {
   return states;
 };
 
-export const canStop = (board: Board) => {
-  return board.reduce((rowsFilled, row) => rowsFilled && row > 0, true);
-};
-
 export const solve = (): Board | undefined => {
   const initialBoard: Board = [0, 0, 0, 0, 0, 0, 0, 0];
 
   const dfs = (board: Board): Board | undefined => {
-    if (canStop(board)) return board;
+    if (isComplete(board)) return board;
 
     return nextStates(board)
       .filter(isBoardValid)

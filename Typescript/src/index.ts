@@ -46,3 +46,7 @@ export const isBoardValid = (board: Board): Boolean => {
     canTakeDiagonally(...board)
   );
 };
+
+export const isComplete = (board: Board) => {
+  return board.reduce((rowsFilled, row) => rowsFilled && row > 0, true);
+};
