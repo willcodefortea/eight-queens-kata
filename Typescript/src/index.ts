@@ -1,4 +1,13 @@
-type Board = [number, number, number, number, number, number, number, number];
+export type Board = [
+  number,
+  number,
+  number,
+  number,
+  number,
+  number,
+  number,
+  number
+];
 
 const isPowerOf2OrZero = (num: number) => Math.log2(num) % 1 === 0 || num === 0;
 
