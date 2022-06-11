@@ -1,31 +1,27 @@
-import {
-  canTakeDiagonally,
-  canTakeVertically,
-  canTakeHorizontally,
-} from "./index";
+import { isBoardValid } from "./index";
 
 const strToNumber = (s: string) => parseInt(s, 2);
+const buildBoard = () => {
+  return [0, 0, 0, 0, 0, 0, 0, 0];
+};
 
-test("two queens cannot be on the same row", () => {
+test.each`
+  firstRow      | secondRow     | type
+  ${"10000010"} | ${"00000000"} | ${"row"}
+  ${"10000000"} | ${"10000000"} | ${"column"}
+  ${"10000000"} | ${"01000000"} | ${"diagonal l->r"}
+  ${"01000000"} | ${"10000000"} | ${"diagonal r->l"}
+`("two queens cannot be in the same $type", ({ firstRow, secondRow }) => {
   expect(
-    canTakeHorizontally(strToNumber("10000000"), strToNumber("00100000"))
-  ).toBe(true);
-});
-
-test("two queens cannot be in the same column", () => {
-  expect(
-    canTakeVertically(strToNumber("10000000"), strToNumber("10000000"))
-  ).toBe(true);
-});
-
-test("two queens cannot be in the same diagonal l->r", () => {
-  expect(
-    canTakeDiagonally(strToNumber("10000000"), strToNumber("01000000"), 1)
-  ).toBe(true);
-});
-
-test("two queens cannot be in the same diagonal r->l", () => {
-  expect(
-    canTakeDiagonally(strToNumber("01000000"), strToNumber("10000000"), 1)
-  ).toBe(true);
+    isBoardValid([
+      strToNumber(firstRow),
+      strToNumber(secondRow),
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+    ])
+  ).toBe(false);
 });
