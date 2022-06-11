@@ -1,4 +1,4 @@
-import { Board } from ".";
+import { Board, isBoardValid } from ".";
 
 export const nextStates = (board: Board) => {
   const states: Board[] = [];
@@ -19,4 +19,25 @@ export const nextStates = (board: Board) => {
 
 export const canStop = (board: Board) => {
   return board.reduce((rowsFilled, row) => rowsFilled && row > 0, true);
+};
+
+export const solve = (): Board | undefined => {
+  const initialBoard: Board = [0, 0, 0, 0, 0, 0, 0, 0];
+
+  const dfs = (board: Board): Board | undefined => {
+    if (!isBoardValid(board)) return;
+
+    const states = nextStates(board);
+    for (let i = 0; i < states.length; i++) {
+      const state = states[i];
+      const solution = dfs(state);
+      if (solution) {
+        return solution;
+      }
+    }
+
+    if (canStop(board)) return board;
+  };
+
+  return dfs(initialBoard);
 };

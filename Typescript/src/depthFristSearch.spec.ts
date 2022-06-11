@@ -1,6 +1,7 @@
-import { canStop, nextStates } from "./depthFirstSearch";
+import { isBoardValid } from ".";
+import { canStop, nextStates, solve } from "./depthFirstSearch";
 
-test("nextStates finds all next states to explore", () => {
+test("when given an empty state, nextStates provides all initial starting locations", () => {
   expect(nextStates([0, 0, 0, 0, 0, 0, 0, 0])).toEqual([
     [1, 0, 0, 0, 0, 0, 0, 0],
     [2, 0, 0, 0, 0, 0, 0, 0],
@@ -32,4 +33,10 @@ test("canStop is true for a full board", () => {
 
 test("canStop to be false for a partially complete board", () => {
   expect(canStop([1, 1, 1, 1, 1, 1, 1, 0])).toBe(false);
+});
+
+test("solve finds a solution", () => {
+  const solution = solve();
+  expect(isBoardValid(solution)).toBe(true);
+  expect(canStop(solution)).toBe(true);
 });
