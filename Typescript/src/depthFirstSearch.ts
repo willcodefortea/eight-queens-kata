@@ -1,6 +1,6 @@
 import { Board, isBoardValid, isComplete } from ".";
 
-const nextStates = (board: Board) => {
+export const nextStates = (board: Board) => {
   const states: Board[] = [];
 
   for (let idx = 0; idx < board.length; idx++) {

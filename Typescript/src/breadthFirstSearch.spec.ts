@@ -1,5 +1,5 @@
 import { isBoardValid, isComplete } from ".";
-import { solve } from "./depthFirstSearch";
+import { solve } from "./breadthFirstSearch";
 
 test("solve finds a solution", () => {
   const solution = solve();
