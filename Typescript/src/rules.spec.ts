@@ -1,4 +1,4 @@
-import { isBoardValid } from "./index";
+import { isBoardValid } from "./rules";
 
 const strToNumber = (s: string) => parseInt(s, 2);
 const buildBoard = () => {

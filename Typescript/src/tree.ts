@@ -1,4 +1,4 @@
-import { Board } from ".";
+import { Board } from "./rules";
 
 export const nextStates = (board: Board) => {
   const states: Board[] = [];

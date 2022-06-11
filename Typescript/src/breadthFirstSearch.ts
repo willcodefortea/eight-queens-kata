@@ -1,4 +1,4 @@
-import { Board, isBoardValid, isComplete } from ".";
+import { Board, isBoardValid, isComplete } from "./rules";
 import { nextStates } from "./tree";
 
 export const solve = (): undefined | Board => {

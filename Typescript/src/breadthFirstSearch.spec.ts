@@ -1,4 +1,4 @@
-import { isBoardValid, isComplete } from ".";
+import { isBoardValid, isComplete } from "./rules";
 import { solve } from "./breadthFirstSearch";
 
 test("solve finds a solution", () => {
