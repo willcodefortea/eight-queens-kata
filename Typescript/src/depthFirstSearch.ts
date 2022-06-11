@@ -16,3 +16,7 @@ export const nextStates = (board: Board) => {
 
   return states;
 };
+
+export const canStop = (board: Board) => {
+  return board.reduce((rowsFilled, row) => rowsFilled && row > 0, true);
+};
