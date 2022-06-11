@@ -50,3 +50,14 @@ export const isBoardValid = (board: Board): Boolean => {
 export const isComplete = (board: Board) => {
   return board.reduce((rowsFilled, row) => rowsFilled && row > 0, true);
 };
+
+export const printBoard = (board: Board) => {
+  board.forEach((row) => {
+    const rowChars = [];
+    for (const char of row.toString(2).padStart(8, "0")) {
+      const friendlyChar = char === "1" ? "👸" : "🔲";
+      rowChars.push(friendlyChar);
+    }
+    console.log(rowChars.join(""));
+  });
+};
