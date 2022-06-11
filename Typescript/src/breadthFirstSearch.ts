@@ -1,5 +1,5 @@
 import { Board, isBoardValid, isComplete } from ".";
-import { nextStates } from "./depthFirstSearch";
+import { nextStates } from "./tree";
 
 export const solve = (): undefined | Board => {
   const toExplore: Board[] = [[0, 0, 0, 0, 0, 0, 0, 0]];
