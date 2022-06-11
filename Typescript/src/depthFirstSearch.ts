@@ -25,18 +25,11 @@ export const solve = (): Board | undefined => {
   const initialBoard: Board = [0, 0, 0, 0, 0, 0, 0, 0];
 
   const dfs = (board: Board): Board | undefined => {
-    if (!isBoardValid(board)) return;
-
-    const states = nextStates(board);
-    for (let i = 0; i < states.length; i++) {
-      const state = states[i];
-      const solution = dfs(state);
-      if (solution) {
-        return solution;
-      }
-    }
-
     if (canStop(board)) return board;
+
+    return nextStates(board)
+      .filter(isBoardValid)
+      .reduce((solution, state) => solution || dfs(state), undefined);
   };
 
   return dfs(initialBoard);
